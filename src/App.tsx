@@ -5,17 +5,23 @@ import { Sidebar } from './components/Sidebar';
 import { LandingPage } from './pages/LandingPage';
 import { ProfilePage } from './components/ProfilePage';
 import { OnboardingFlow } from './pages/OnboardingFlow';
+
 import { ProjectCreationFlow } from './components/ProjectCreationFlow';
 import { VendorComparisonReport } from './pages/VendorComparisionReport';
 import { VendorSelectionPage } from './pages/VendorSelectionPage';
+import CommingSoon2 from './components/commingSoon copy';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Dashboard from './pages/Dashboard';
+import CommingSoon from './components/commingSoon';
 import DashboardPostLogin from './pages/DashboardPostLogin';
 import Login from './pages/Login';
 import AuthModal from './components/AuthModal';
 import { AuthProvider } from './contexts/AuthContext';
 import { User, UserType } from './types';
+import HomePage from './pages/Dashboard1';
+import UserOnboarding from './components/OnboardingSteps';
+
 
 const mockUser: User = {
   id: '1',
@@ -27,7 +33,8 @@ const mockUser: User = {
 };
 
 const hideHeaderRoutes = [
-    '/onboarding',
+     '/coming-soon',
+     '/cs',
     '/project-creation',
     '/simple-purpose',
     '/vendor-comparison',
@@ -35,6 +42,7 @@ const hideHeaderRoutes = [
   ];
 
 const hideFooterRoutes = [
+  '/user-onboarding',
   '/onboarding',
   '/project-creation',
   '/simple-purpose',
@@ -52,8 +60,9 @@ function AppContent() {
   const showHeader = !hideHeaderRoutes.includes(path);
   const showFooter = !hideFooterRoutes.includes(path);
 
-  const handleOnboardingComplete = (type: UserType) => {
+ const handleOnboardingComplete = (type: UserType) => {
     setUserType(type);
+    localStorage.removeItem('onboarding-progress');
     navigate('/');
   };
 
@@ -71,11 +80,17 @@ function AppContent() {
         <main className="flex-1">
           <Routes>
             <Route path="/landing" element={<LandingPage onVendorCompare={() => navigate('/vendor-comparison')} onVendorSelect={() => navigate('/vendor-selection')} />} />
+            <Route path="/coming-soon" element={<CommingSoon />} />
+            <Route path="/cs" element={<CommingSoon2 />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<DashboardPostLogin />} />
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<DashboardPostLogin />} /> 
             <Route path="/profile" element={<ProfilePage user={mockUser} />} />
-            <Route path="/onboarding" element={<OnboardingFlow onComplete={handleOnboardingComplete} />} />
+            {/* <Route path="/onboarding" element={<OnboardingFlow onComplete={handleOnboardingComplete} />} /> */}
+            <Route
+  path="/user-onboarding"
+  element={<UserOnboarding onComplete={(data) => handleOnboardingComplete(data.userType as UserType)} />}
+/>
             <Route path="/project-creation" element={<ProjectCreationFlow onClose={() => navigate('/')} onComplete={handleProjectCreationComplete} />} />
             <Route path="/vendor-comparison" element={<VendorComparisonReport onClose={() => navigate('/')} />} />
             <Route path="/vendor-selection" element={<VendorSelectionPage onClose={() => navigate('/')} />} />

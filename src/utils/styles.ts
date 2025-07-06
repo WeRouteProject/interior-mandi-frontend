@@ -12,10 +12,13 @@ export const colors = {
 };
 
 export const textStyles = {
-  heading: 'text-3xl font-bold text-gray-900',
-  subtext: 'text-gray-600 text-sm',
+  steptitle:'text-2xl lg:text-3xl font-bold text-gray-900 mb-4 EB Garamond',
+  stepSubtitles: 'text-gray-600 mb-6 Arimo Hebrew Subset',
+  formfield: 'text-lg font-medium Arimo Hebrew Subset',
+  fieldheading: 'EB Garamond',
   button: 'font-medium text-[16px]',
 };
+
 
 export const buttonStyles = {
   primary:

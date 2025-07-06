@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../pages/Login'; // Assuming you have some styles for the header
+import logo from '../assets/transparent logo.png'; // Adjust the path as necessary
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -12,11 +13,12 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                IM
+            
+              
+               <div className="flex items-center justify-center mb-0"> 
+                                <img src={logo} alt="Logo" className="h-12" />
               </div>
-            </div>
+           
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-8">

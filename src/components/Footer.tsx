@@ -1,17 +1,21 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import logo from '../assets/transparent logo.png';
+"use client";
+
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="bg-black text-white mt-30 pt-10 pb-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="col-span-1">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3">
-                  IM
-                </div>
+              <div className="flex items-center mb-4 space-x-2">
+                
+                 <div className="flex justify-center mb-8">
+                                <img src={logo} alt="Logo" className="h-20" />
+                  </div>
                 <span className="text-xl font-bold">Interior Mandi</span>
               </div>
               <p className="text-gray-400 mb-6 text-sm leading-relaxed">
@@ -72,6 +76,8 @@ const Footer: React.FC = () => {
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
             <p className="text-gray-400 text-sm">© 2024 Interior Mandi. All rights reserved.</p>
           </div>
+
+          
         </div>
       </footer>
   );
